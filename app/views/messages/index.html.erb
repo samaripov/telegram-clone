@@ -1,2 +1,2 @@
 <%= render @messages %>
-<%= link_to "New Message", [:new, :message] %>
+<%= render "messages/form", message: @message %>
