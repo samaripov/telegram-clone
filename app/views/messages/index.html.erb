@@ -1,2 +1,7 @@
-<%= render @messages %>
-<%= render "messages/form", message: @message %>
+<%= turbo_frame_tag "messages" do %>
+  <%= render @messages %>
+<% end %>
+
+<%= turbo_frame_tag "message_form" do %>
+  <%= render "messages/form", message: @new_message %>
+<% end %>

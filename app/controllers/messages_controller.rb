@@ -1,15 +1,22 @@
 class MessagesController < ApplicationController
   def index
     @messages = Message.all
-    @message = Message.new
+    @new_message = Message.new
   end
 
   def create
     @message = Message.new(message_params)
     if @message.save
-      redirect_to root_path, notice: "sent"
+      @new_message = Message.new
+      respond_to do |format|
+        format.html { redirect_to root_path, notice: "sent" }
+        format.turbo_stream { flash.now[:notice] = "sent" }
+      end
     else
-      render :new, status: :unprocessable_content
+      respond_to do |format|
+        format.html { render :index, status: :unprocessable_content }
+        format.turbo_stream { flash.now[:notice] = "Unable to send message." }
+      end
     end
   end
 

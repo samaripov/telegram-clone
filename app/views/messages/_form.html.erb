@@ -1,7 +1,7 @@
 <div data-controller="message">
   <%= render "layouts/errors", entity: message %>
   <%= form_with model: message do |form| %>
-    <%= form.text_field :text, placeholder: "Write a message...", data: { target: "message.text" } %>
-    <%= form.submit "Submit", data: { target: "message.submit" } %>
+    <%= form.text_field :text, placeholder: "Write a message...", data: { message_target: "text" } %>
+    <%= form.submit "Submit", data: { message_target: "submit" } %>
   <% end %>
 </div>
