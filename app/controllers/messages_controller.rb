@@ -1,13 +1,13 @@
 class MessagesController < ApplicationController
   def index
     @messages = Message.all
-    @new_message = Message.new
+    @new_message = current_user.sent_messages.new
   end
 
   def create
-    @message = Message.new(message_params)
+    @message = current_user.sent_messages.new(message_params)
+    @new_message = current_user.sent_messages.new
     if @message.save
-      @new_message = Message.new
       respond_to do |format|
         format.html { redirect_to root_path, notice: "sent" }
         format.turbo_stream { flash.now[:notice] = "sent" }
