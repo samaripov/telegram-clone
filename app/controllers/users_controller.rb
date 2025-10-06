@@ -6,6 +6,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @friends = Message.where("receiver_id = ? OR sender_id = ?", current_user.id, current_user.id)
+    messages = Message.where("receiver_id = ? OR sender_id = ?", current_user.id, current_user.id)
+    friend_ids = messages.pluck(:sender_id, :receiver_id).flatten.uniq - [ current_user.id ]
+    @friends = User.where(id: friend_ids)
   end
 end
