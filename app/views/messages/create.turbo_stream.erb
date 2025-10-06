@@ -1,4 +1,4 @@
 <%= turbo_stream.append "messages", @message %>
 <%= turbo_stream.update "message_form" do %>
-  <%= render "messages/form", message: @new_message %>
+  <%= render "messages/form", message: @new_message, receiver_id: @receiver.id %>
 <% end %>

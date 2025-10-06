@@ -23,8 +23,12 @@
   </head>
 
   <body>
-    <%= button_to "Log out", destroy_user_session_path, method: :delete %>
-    <%= render "users/search_form" %>
+    <% if current_user %>
+      <%= button_to "Log out", destroy_user_session_path, method: :delete %>
+      <%= link_to "Home", root_path %>
+      <%= render current_user%>
+      <%= render "users/search_form" %>
+    <% end %>
     <%= yield %>
   </body>
 </html>

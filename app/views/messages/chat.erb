@@ -1,9 +1,9 @@
 <%= turbo_stream_from "messages" %>
-
+<h3><%= @receiver.username %></h3>
 <%= turbo_frame_tag "messages" do %>
   <%= render @messages %>
 <% end %>
 
 <%= turbo_frame_tag "message_form" do %>
-  <%= render "messages/form", message: @new_message %>
+  <%= render "messages/form", message: @new_message, receiver_id: @receiver.id %>
 <% end %>
