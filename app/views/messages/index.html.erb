@@ -1,6 +1,5 @@
 <%= turbo_stream_from "messages" %>
 
-<%= button_to "Log out", destroy_user_session_path, method: :delete %>
 <%= turbo_frame_tag "messages" do %>
   <%= render @messages %>
 <% end %>
