@@ -1,5 +1,5 @@
 <h3><%= user.username %></h3>
 <% unless current_user == user %>
-  <%= link_to "Message",  chat_path(sender_id: current_user.id, receiver_id: user.id)%>
+  <%= link_to "Message", chat_path(sender_id: current_user.id, receiver_id: user.id), data: { turbo_frame: "main" } %>
 <% end %>
 <hr>

@@ -1,7 +1,9 @@
-<main class="content">
-  <% if @users %>
-    <%= render @users %>
-  <% else %>
-    <p>No results</p>
-  <% end %>
-</main>
+<%= turbo_frame_tag "main" do %>
+  <main class="content">
+    <% if @users %>
+      <%= render @users %>
+    <% else %>
+      <p>No results</p>
+    <% end %>
+  </main>
+<% end %>
