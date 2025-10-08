@@ -1,5 +1,5 @@
-<%= turbo_stream_from @messages.last.chat_id, "messages" %>
 <%= turbo_frame_tag "main" do %>
+  <%= turbo_stream_from @messages.last.chat_id, "messages" %>
   <h3><%= @receiver.username %></h3>
   <%= turbo_frame_tag "messages" do %>
     <%= render @messages %>

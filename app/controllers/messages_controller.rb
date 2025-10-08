@@ -1,14 +1,16 @@
 class MessagesController < ApplicationController
+  before_action :setup_init_variables
   def chat
-    @receiver = User.find(params[:receiver_id])
-    @messages = Message.where("((receiver_id = ? AND sender_id = ?) OR (sender_id = ? AND receiver_id = ?))", @receiver.id, current_user.id, @receiver.id, current_user.id)
-    @new_message = current_user.sent_messages.new
+    if @messages.empty?
+      redirect_to new_message_path(sender_id: current_user.id, receiver_id: @receiver.id)
+    end
   end
-
+  def new
+  end
   def create
     @message = current_user.sent_messages.new(message_params)
-    @new_message = current_user.sent_messages.new
     @receiver = User.find(message_params[:receiver_id])
+    @messages = Message.where("((receiver_id = ? AND sender_id = ?) OR (sender_id = ? AND receiver_id = ?))", @receiver.id, current_user.id, @receiver.id, current_user.id)
 
     if @message.save
       respond_to do |format|
@@ -24,6 +26,13 @@ class MessagesController < ApplicationController
   end
 
   private
+    def setup_init_variables
+      if params[:receiver_id]
+        @receiver = User.find(params[:receiver_id])
+        @messages = Message.where("((receiver_id = ? AND sender_id = ?) OR (sender_id = ? AND receiver_id = ?))", @receiver.id, current_user.id, @receiver.id, current_user.id)
+      end
+      @new_message = current_user.sent_messages.new
+    end
     def message_params
       params.require(:message).permit(:text, :receiver_id)
     end
