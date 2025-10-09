@@ -33,9 +33,9 @@ class ChatsController < ApplicationController
   private
     def users_shared_chats(user_ids, number_of_users = 2)
       Userchat
-            .select(:chat_id)
-            .where(user_id: user_ids)
-            .group(:chat_id)
-            .having("COUNT(DISTINCT user_id) = ?", number_of_users)
+        .select(:chat_id)
+        .where(user_id: user_ids)
+        .group(:chat_id)
+        .having("COUNT(DISTINCT user_id) = ?", number_of_users)
     end
 end

@@ -6,6 +6,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @friends = current_user.friends
+    @open_chats = current_user.open_chats
   end
 end
