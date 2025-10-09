@@ -1,3 +1,6 @@
 <%= turbo_frame_tag "main" do %>
-  <%= render @friends %>
+  <%= turbo_stream_from current_user.id, "friends" %>
+  <%= turbo_frame_tag "friends" do %>
+    <%= render @friends %>
+  <% end %>
 <% end %>

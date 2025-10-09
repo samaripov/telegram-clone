@@ -1,0 +1,7 @@
+<%= turbo_frame_tag "main" do %>
+  <p>@Chat-ID <%= @chat.id %></p>
+  <h1>Showing</h1>
+  <% @users.each do |user| %>
+    <%= render user %>
+  <% end %>
+<% end %>

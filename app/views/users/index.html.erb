@@ -1,6 +1,7 @@
 <%= turbo_frame_tag "main" do %>
   <main class="content">
-    <% if @users %>
+    <% @users ||= [] %>
+    <% if @users.any? %>
       <%= render @users %>
     <% else %>
       <p>No results</p>

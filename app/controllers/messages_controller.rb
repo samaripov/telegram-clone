@@ -9,9 +9,6 @@ class MessagesController < ApplicationController
   end
   def create
     @message = current_user.sent_messages.new(message_params)
-    @receiver = User.find(message_params[:receiver_id])
-    @messages = Message.where("((receiver_id = ? AND sender_id = ?) OR (sender_id = ? AND receiver_id = ?))", @receiver.id, current_user.id, @receiver.id, current_user.id)
-
     if @message.save
       respond_to do |format|
         format.html { redirect_to chat_path(sender_id: current_user.id, receiver_id: @receiver.id), notice: "sent" }
@@ -29,6 +26,9 @@ class MessagesController < ApplicationController
     def setup_init_variables
       if params[:receiver_id]
         @receiver = User.find(params[:receiver_id])
+        @messages = Message.where("((receiver_id = ? AND sender_id = ?) OR (sender_id = ? AND receiver_id = ?))", @receiver.id, current_user.id, @receiver.id, current_user.id)
+      elsif message_params[:receiver_id]
+        @receiver = User.find(message_params[:receiver_id])
         @messages = Message.where("((receiver_id = ? AND sender_id = ?) OR (sender_id = ? AND receiver_id = ?))", @receiver.id, current_user.id, @receiver.id, current_user.id)
       end
       @new_message = current_user.sent_messages.new

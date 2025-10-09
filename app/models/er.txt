@@ -1,0 +1,9 @@
+users (many) <-> (one) userchats
+userchats (one) <-> (many) chats
+
+thus: [users (many) <-> (many) chats] through userchats
+
+chats (one) <-> (many) messages
+users (one) <-> (many) messages
+
+messages belong to chats and users.
