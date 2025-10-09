@@ -1,6 +1,4 @@
 <%= turbo_frame_tag "main" do %>
-  <%= turbo_stream_from current_user.id, "friends" %>
-  <%= turbo_frame_tag "friends" do %>
-    <%= render @friends %>
-  <% end %>
+  <%= turbo_stream_from "#{current_user.id}-chats" %>
+  <div id="users-chats"></div>
 <% end %>

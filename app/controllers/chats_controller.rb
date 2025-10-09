@@ -20,10 +20,12 @@ class ChatsController < ApplicationController
       user_ids.each do |user_id|
         user = User.find(user_id)
         Userchat.create(user: user, chat: @chat)
+        chat_partial = ApplicationController.render(partial: "chats/chat", locals: { chat: @chat })
+        Turbo::StreamsChannel.broadcast_append_to("#{user.id}-chats", target: "users-chats", html: chat_partial)
       end
       redirect_to @chat
     else
-      puts @chat.errors.full_messages.to_sentence
+      flash[:alert] = @chat.errors.full_messages.to_sentence
       redirect_to root_path
     end
   end
