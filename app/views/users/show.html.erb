@@ -1,6 +1,9 @@
 <%= turbo_frame_tag "main" do %>
   <%= turbo_stream_from "#{current_user.id}-chats" %>
+  <p>Chats</p>
   <div id="users-chats">
-    <%= render partial: "chats/chat", collection: @open_chats, as: :chat %>
+    <% @open_chats.each do |chat| %>
+      <%= render chat, label: chat.label(current_user) %>
+    <% end %>
   </div>
 <% end %>

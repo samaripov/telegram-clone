@@ -8,7 +8,9 @@ class ChatsController < ApplicationController
   end
   def create
     user_ids = params[:user_ids].map(&:to_i)
+    users = user_ids.map { |id| User.find(id.to_i) }
     @chat = Chat.new()
+
     # Find all chats that current users are in.
     # If it doesn't exist make a new chat.
     userchats = users_shared_chats(user_ids)
@@ -17,10 +19,13 @@ class ChatsController < ApplicationController
       @chat = Chat.find(userchats[0].chat_id)
       redirect_to @chat
     elsif @chat.save
-      user_ids.each do |user_id|
-        user = User.find(user_id)
+      # Create associations between users and chats
+      users.each do |user|
         Userchat.create(user: user, chat: @chat)
-        chat_partial = ApplicationController.render(partial: "chats/chat", locals: { chat: @chat })
+      end
+      # Broadcast the chat to everyone in the chat but the current user
+      (users - [ current_user ]).each do |user|
+        chat_partial = ApplicationController.render(partial: "chats/chat", locals: { chat: @chat, label: current_user.username })
         Turbo::StreamsChannel.broadcast_append_to("#{user.id}-chats", target: "users-chats", html: chat_partial)
       end
       redirect_to @chat
