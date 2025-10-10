@@ -4,6 +4,7 @@
   margin-block-end: calc(var(--space-xxxxl) + var(--space-xxxxl) + var(--space-xs));
 }
 .input_container {
+  padding-inline: var(--space-m);
   display: flex;
   justify-content: center;
   background: var(--color-background);

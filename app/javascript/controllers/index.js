@@ -9,3 +9,6 @@ application.register("hello", HelloController)
 
 import MessageController from "./message_controller"
 application.register("message", MessageController)
+
+import ScrollDownWhenNewMessageController from "./scroll_down_when_new_message_controller"
+application.register("scroll-down-when-new-message", ScrollDownWhenNewMessageController)
