@@ -1,4 +1,6 @@
 <%= turbo_frame_tag "main" do %>
+  <%= render current_user%>
+  <%= render "users/search_form" %>
   <%= turbo_stream_from "#{current_user.id}-chats" %>
   <p>Chats</p>
   <div id="users-chats">

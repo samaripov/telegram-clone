@@ -1,4 +1,6 @@
 <%= turbo_frame_tag "main" do %>
+  <%= render current_user%>
+  <%= render "users/search_form" %>
   <main class="content">
     <% @users ||= [] %>
     <% if @users.any? %>
