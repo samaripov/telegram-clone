@@ -1,5 +1,5 @@
 <%= turbo_frame_tag "main" do %>
-  <main class="container">
+  <main class="container chat">
     <h1><%= @user.username %>'s DM</h1>
     <%= render "chats/chat_form", user_ids: [current_user.id, @user.id]%>
   </main>

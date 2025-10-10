@@ -1,5 +1,5 @@
 <%= turbo_frame_tag "main" do %>
-  <main class="container">
+  <main class="container chat">
     <%= turbo_stream_from "chat-#{@chat.id}-messages"%>
     <h4><%= @chat.label(current_user) %></h4>
     

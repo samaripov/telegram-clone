@@ -1,5 +1,7 @@
-<h3><%= user.username %></h3>
-<% unless current_user == user %>
-  <%= link_to "Message", new_chat_path(receiver_id: user.id), data: { turbo_frame: "main" } %>
-<% end %>
-<hr>
+<main>
+  <h3><%= user.username %></h3>
+  <% unless current_user == user %>
+    <%= link_to "Message", new_chat_path(receiver_id: user.id), data: { turbo_frame: "main" } %>
+  <% end %>
+  <hr>
+</main>

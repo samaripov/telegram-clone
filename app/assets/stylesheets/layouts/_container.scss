@@ -8,6 +8,7 @@
   margin-bottom: var(--space-xxxxl);
   margin-left: auto;
   margin-right: auto;
+  font-size: large;
 
   @include media('tabletAndUp') {
     padding-right: var(--space-m);

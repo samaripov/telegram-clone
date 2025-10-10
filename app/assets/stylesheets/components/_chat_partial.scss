@@ -1,0 +1,22 @@
+.chat_partial {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 100%;
+  padding: var(--space-xxs);
+  p {
+    margin: 0;
+  }
+
+  .label {
+    font-weight: bold;
+    font-size: larger;
+  }
+  .last_text{
+    margin-block-start: var(--space-xs);
+    color: grey;
+  }
+  &:hover {
+    background: rgb(243, 243, 243);
+  }
+}

@@ -1,3 +1,6 @@
-<div id="chat-<%= chat.id%>">
-  <%= link_to "#{label}", chat_path(chat)%>
-</div>
+<%= link_to chat_path(chat) do %>
+  <div id="chat-<%= chat.id%>" class="chat_partial">
+    <p class="label"><%= label %></p>
+    <p class="last_text">The will be the last text sent</p>
+  </div>
+<% end %>
