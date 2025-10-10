@@ -1,0 +1,9 @@
+<div data-controller="message">
+  <%= form_with url: chats_path, method: :post do |form| %>
+    <%= form.text_field :text, autofocus: true,  placeholder: "Write a message...", data: { message_target: "text" } %>
+    <% user_ids.each do |user_id| %>
+      <%= form.hidden_field "user_ids[]", value: user_id %>
+    <% end %>
+    <%= form.submit "Submit", data: { message_target: "submit" } %>
+  <% end %>
+</div>

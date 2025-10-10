@@ -82,8 +82,6 @@ production:
   primary: &primary_production
     <<: *default
     database: telegram_clone_production
-    username: telegram_clone
-    password: <%= ENV["TELEGRAM_CLONE_DATABASE_PASSWORD"] %>
   cache:
     <<: *primary_production
     database: telegram_clone_production_cache
