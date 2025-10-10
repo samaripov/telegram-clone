@@ -3,7 +3,7 @@
     <%= turbo_stream_from "chat-#{@chat.id}-messages"%>
     <h4><%= @chat.label(current_user) %></h4>
     
-    <div data-controller="scroll-down-when-new-message">
+    <div class="messages" data-controller="scroll-down-when-new-message">
       <%= turbo_frame_tag "messages" do %>
         <% @chat.messages.each do |message| %>
           <%= render "messages/message", message: message %>

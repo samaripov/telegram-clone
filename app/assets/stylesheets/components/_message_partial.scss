@@ -1,0 +1,30 @@
+.messages {
+  display: flex;
+
+  .left_position, .right_position {
+    display: flex;
+  }
+  .right_position {
+    justify-content: end;
+  }
+  .left_position p, .right_position p{
+    border-radius: var(--space-m);
+    max-width: fit-content;
+    word-wrap: break-word;
+    padding: var(--space-xxs);
+    padding-inline: var(--space-xs);
+    margin: var(--space-xxxxs);
+  }
+  .left_position p{
+    color: black;
+    background: var(--color-background);
+  }
+  .right_position p{
+    color: white;
+    background: var(--color-primary);
+  }
+}
+
+#messages {
+  min-width: 100%;
+}
