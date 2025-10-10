@@ -10,13 +10,13 @@ class ChatsController < ApplicationController
     user_ids = params[:user_ids].map(&:to_i)
     users = user_ids.map { |id| User.find(id.to_i) }
     @chat = Chat.new()
-
     # Find all chats that current users are in.
     # If it doesn't exist make a new chat.
     userchats = users_shared_chats(user_ids)
 
     if userchats.any?
       @chat = Chat.find(userchats[0].chat_id)
+      commit_initial_message_to_chat(@chat.id)
       redirect_to @chat
     elsif @chat.save
       # Create associations between users and chats
@@ -28,6 +28,7 @@ class ChatsController < ApplicationController
         chat_partial = ApplicationController.render(partial: "chats/chat", locals: { chat: @chat, label: current_user.username })
         Turbo::StreamsChannel.broadcast_append_to("#{user.id}-chats", target: "users-chats", html: chat_partial)
       end
+      commit_initial_message_to_chat(@chat.id)
       redirect_to @chat
     else
       flash[:alert] = @chat.errors.full_messages.to_sentence
@@ -36,6 +37,15 @@ class ChatsController < ApplicationController
   end
 
   private
+    def commit_initial_message_to_chat(chat_id)
+      initial_message = params[:text]
+      if initial_message
+        current_user.sent_messages.create(
+          receiver_id: chat_id,
+          text: initial_message
+        )
+      end
+    end
     def users_shared_chats(user_ids, number_of_users = 2)
       Userchat
         .select(:chat_id)
