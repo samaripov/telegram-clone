@@ -5,6 +5,11 @@ class ChatsController < ApplicationController
   end
   def new
     @user = User.find(params[:receiver_id])
+    userchats = users_shared_chats([ current_user.id, params[:receiver_id] ])
+    if userchats.any?
+      @chat = Chat.find(userchats[0].chat_id)
+      redirect_to @chat
+    end
   end
   def create
     user_ids = params[:user_ids].map(&:to_i)
