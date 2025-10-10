@@ -1,0 +1,30 @@
+.navbar {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  min-height: var(--space-xxxxl);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navbar > * {
+  flex: 1;
+  align-content: center;
+}
+.navbar > a, .navbar button {
+  background: #27a5ff;
+  display: inline;
+  text-align: center;
+  width: 100%;
+  min-height: var(--space-xxxxl);
+  color: white;
+  font-weight: bold;
+  font-size: xx-large;
+  border: none;
+
+  &:hover {
+    background: #50b6ff;
+    cursor: pointer;
+  }
+}

@@ -1,11 +1,12 @@
 <%= turbo_frame_tag "main" do %>
-  <%= render current_user%>
-  <%= render "users/search_form" %>
-  <%= turbo_stream_from "#{current_user.id}-chats" %>
-  <p>Chats</p>
-  <div id="users-chats">
-    <% @open_chats.each do |chat| %>
-      <%= render chat, label: chat.label(current_user) %>
-    <% end %>
-  </div>
+  <main class="container">
+    <%= render current_user%>
+    <%= turbo_stream_from "#{current_user.id}-chats" %>
+    <p>Chats</p>
+    <div id="users-chats">
+      <% @open_chats.each do |chat| %>
+        <%= render chat, label: chat.label(current_user) %>
+      <% end %>
+    </div>
+  </main>
 <% end %>

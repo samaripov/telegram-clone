@@ -1,5 +1,10 @@
 // Entry point for your Sass build
+@use "config/variables.scss";
+
 @use "mixins/media";
 
 @use "layouts/header";
 @use "layouts/container";
+
+@use "components/navbar";
+@use "components/chat";

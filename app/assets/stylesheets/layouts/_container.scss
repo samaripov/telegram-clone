@@ -1,10 +1,11 @@
 // stylesheets/components/_quote.scss
 @use "../mixins/media" as *; // This allows you to use the mixin without a namespace
-
+@use "../config/variables.scss";
 .container {
   width: 100%;
-  padding-right: var(--space-xs);
-  padding-left: var(--space-xs);
+  padding-right: var(--space-m);
+  padding-left: var(--space-m);
+  margin-bottom: var(--space-xxxxl);
   margin-left: auto;
   margin-right: auto;
 
