@@ -1,6 +1,6 @@
 <div data-controller="message">
   <%= render "layouts/errors", entity: message %>
-  <%= form_with model: message, data: {turbo_frame: "main"} do |form| %>
+  <%= form_with model: message, url: chat_messages_path(receiver_id), method: :post, data: {turbo_frame: "main"} do |form| %>
     <%= form.text_field :text, autofocus: true,  placeholder: "Write a message...", data: { message_target: "text" } %>
     <%= form.hidden_field :receiver_id, value: receiver_id %>
     <%= form.submit "Submit", data: { message_target: "submit" } %>

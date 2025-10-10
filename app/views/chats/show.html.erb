@@ -1,7 +1,14 @@
 <%= turbo_frame_tag "main" do %>
-  <p>@Chat-ID <%= @chat.id %></p>
-  <h1>Showing</h1>
-  <% @users.each do |user| %>
-    <%= render user %>
+  <%= turbo_stream_from "chat-#{@chat.id}-messages"%>
+  <h4><%= @chat.label(current_user) %></h4>
+  
+  <%= turbo_frame_tag "messages" do %>
+    <% @chat.messages.each do |message| %>
+      <%= render "messages/message", message: message %>
+    <% end %>
+  <% end %>
+
+  <%= turbo_frame_tag "message_form" do %>
+    <%= render "chats/message_form", message: current_user.sent_messages.new, receiver_id: @chat.id %>
   <% end %>
 <% end %>

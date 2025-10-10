@@ -1,7 +1,7 @@
 class Chat < ApplicationRecord
+  has_many :messages, foreign_key: "receiver_id"
   has_many :userchats
   has_many :users, through: :userchats
-  has_many :messages
 
   def label(current_user)
     return nil unless self.persisted?

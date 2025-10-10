@@ -1,10 +1,4 @@
-<% if @messages.length <= 1%>
-  <%= turbo_stream.replace "main" do %>
-    <%= render "messages/chat", message: @message, receiver: @receiver %>
-  <% end %>
-<% end %>
-
 <%= turbo_stream.append "messages", @message %>
 <%= turbo_stream.update "message_form" do %>
-  <%= render "messages/form", message: @new_message, receiver_id: @receiver.id %>
+  <%= render "chats/message_form", message: @new_message, receiver_id: @receiver.id %>
 <% end %>
