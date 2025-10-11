@@ -1,6 +1,9 @@
 <%= link_to chat_path(chat) do %>
   <div id="chat-<%= chat.id%>" class="chat_partial">
     <p class="label"><%= label %></p>
-    <p class="last_text">The will be the last text sent</p>
+    <%= turbo_stream_from "chat-#{chat.id}-last-message-stream" %>
+    <%= turbo_frame_tag "chat-#{chat.id}-last-message" do %>
+      <%= render "chats/last_message", text: chat.last_sent_message.text, chat_id: chat.id %>
+    <% end %>
   </div>
 <% end %>
