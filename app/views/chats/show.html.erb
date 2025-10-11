@@ -1,12 +1,12 @@
 <%= turbo_frame_tag "main" do %>
   <main class="container chat">
     <%= turbo_stream_from "chat-#{@chat.id}-messages"%>
-    <h4><%= @chat.label(current_user) %></h4>
+    <h4 class="chat_title"><%= @chat.label(current_user) %></h4>
     
-    <div class="messages" data-controller="scroll-down-when-new-message">
+    <div class="messages_container" data-controller="scroll-down-when-new-message">
       <%= turbo_frame_tag "messages" do %>
         <% @chat.messages.each do |message| %>
-          <%= render "messages/message", message: message %>
+          <%= render "messages/message", message: message, position: message.sender_id == current_user.id ? "right_position" : "left_position" %>
         <% end %>
       <% end %>
     </div>

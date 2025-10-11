@@ -1,12 +1,5 @@
 class MessagesController < ApplicationController
   before_action :setup_init_variables
-  def chat
-    if @messages.empty?
-      redirect_to new_message_path(sender_id: current_user.id, receiver_id: @receiver.id)
-    end
-  end
-  def new
-  end
   def create
     @message = current_user.sent_messages.new(message_params)
     if @message.save

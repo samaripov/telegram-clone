@@ -1,6 +1,7 @@
 .chat {
   display: flex;
   flex-direction: column; 
+  margin-block-start: var(--space-xxxxl);
   margin-block-end: calc(var(--space-xxxxl) + var(--space-xxxxl) + var(--space-xs));
 }
 .input_container {

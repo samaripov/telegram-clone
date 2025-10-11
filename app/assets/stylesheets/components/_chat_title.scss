@@ -1,0 +1,13 @@
+.chat_title {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  background: var(--color-primary-bg);
+  min-height: var(--space-xxxxl);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+}

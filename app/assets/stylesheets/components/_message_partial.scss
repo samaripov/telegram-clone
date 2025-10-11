@@ -1,6 +1,8 @@
-.messages {
+.messages_container {
   display: flex;
-
+  > * {
+    min-width: 100%;
+  }
   .left_position, .right_position {
     display: flex;
   }
@@ -23,8 +25,4 @@
     color: white;
     background: var(--color-primary);
   }
-}
-
-#messages {
-  min-width: 100%;
 }
