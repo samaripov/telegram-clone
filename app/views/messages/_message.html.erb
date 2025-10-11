@@ -1,4 +1,4 @@
-<% position ||= "left_position" %>
-<div id="message_<%= message.id %>" class="<%= position %>">
+<div id="message_<%= message.id %>">
+  <h5>@<%= message.sender.username%></h5>
   <p><%= message.text %></p>
 </div>
