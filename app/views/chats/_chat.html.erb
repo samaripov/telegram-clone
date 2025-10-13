@@ -1,4 +1,4 @@
-<%= link_to chat_path(chat) do %>
+<%= link_to chat_path(chat), data: {turbo_frame: "_top" } do %>
   <div id="chat-<%= chat.id%>" class="chat_partial">
     <p class="label"><%= label %></p>
     <%= turbo_stream_from "chat-#{chat.id}-last-message-stream" %>

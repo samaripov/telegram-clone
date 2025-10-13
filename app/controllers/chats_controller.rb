@@ -24,6 +24,7 @@ class ChatsController < ApplicationController
       commit_initial_message_to_chat(@chat.id)
       redirect_to @chat
     elsif @chat.save
+      commit_initial_message_to_chat(@chat.id)
       # Create associations between users and chats
       users.each do |user|
         Userchat.create(user: user, chat: @chat)
@@ -31,9 +32,8 @@ class ChatsController < ApplicationController
       # Broadcast the chat to everyone in the chat but the current user
       (users - [ current_user ]).each do |user|
         chat_partial = ApplicationController.render(partial: "chats/chat", locals: { chat: @chat, label: current_user.username })
-        Turbo::StreamsChannel.broadcast_append_to("#{user.id}-chats", target: "users-chats", html: chat_partial)
+        Turbo::StreamsChannel.broadcast_prepend_to("#{user.id}-chats", target: "users-chats", html: chat_partial)
       end
-      commit_initial_message_to_chat(@chat.id)
       redirect_to @chat
     else
       flash[:alert] = @chat.errors.full_messages.to_sentence

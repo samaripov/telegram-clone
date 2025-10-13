@@ -3,7 +3,9 @@
   <%= form_with model: message, url: chat_messages_path(receiver_id), method: :post, data: {turbo_frame: "main"}, class: "input_container" do |form| %>
     <%= form.text_field :text, autocomplete: "off",  placeholder: "Write a message...", data: { message_target: "text" } %>
     <%= form.hidden_field :receiver_id, value: receiver_id %>
-    <%= form.submit "Send >", data: { message_target: "submit" } %>
+    <%= button_tag type: "submit", data: { message_target: "submit" } do %>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="m0 0l20 10L0 20V0zm0 8v4l10-2L0 8z"/></svg>
+    <% end %>
   <% end %>
 </div>
 

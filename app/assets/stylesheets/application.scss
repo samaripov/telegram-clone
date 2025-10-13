@@ -11,3 +11,13 @@
 @use "components/chat_partial";
 @use "components/message_partial";
 @use "components/chat_title";
+
+button, input[type="submit"]{
+  border: none;
+  border-radius: var(--small-xxl);
+  color: white;
+  font-weight: bold;
+  background: var(--color-primary);
+  font-size: larger;
+  padding: 0.5rem 1rem 0.5rem;
+}
