@@ -14,8 +14,7 @@ export default class extends Controller {
     this.resizeObserver.disconnect();
   }
   scrollToTheBottom() {
-    setTimeout(()=>{}, 500);
-    const lastDiv = document.querySelector('#messages div:last-of-type');
-    lastDiv.scrollIntoView({ behavior: "smooth" });
+    const lastItem = document.querySelector('#bottom');
+    lastItem.scrollIntoView();
   }
 }

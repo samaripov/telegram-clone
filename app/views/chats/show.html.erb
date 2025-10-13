@@ -6,9 +6,10 @@
     <div class="messages_container">
       <%= turbo_frame_tag "messages" do %>
         <% @chat.messages.each do |message| %>
-          <%= render message, position: "#{message.sender.id == current_user.id ? "right_position" : "left_position" }" %>
+          <%= render "messages/message", message: message, position: "#{message.sender.id == current_user.id ? "right_position" : "left_position" }", animate: false %>
         <% end %>
       <% end %>
+      <p id="bottom" style="height: 0; margin: 0; padding: 0;"></p>
     </div>
 
     <%= turbo_frame_tag "message_form" do %>

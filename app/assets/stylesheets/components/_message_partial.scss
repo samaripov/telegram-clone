@@ -27,4 +27,25 @@
     color: white;
     background: var(--color-primary);
   }
+  .animate {
+    animation: appearText 0.8s ease-in forwards;
+    animation-iteration-count: 1;
+  }
+  @keyframes appearText {
+    0% {
+      font-size: 0%;
+    }
+    25% {
+      font-size: 120%;
+    }
+    50% {
+      font-size: 95%;
+    }
+    75% {
+      font-size: 105%;
+    }
+    100% {
+      font-size: 100%;
+    }
+  }
 }

@@ -1,5 +1,5 @@
 <%= turbo_stream.append "messages" do %>
-  <%= render "messages/message", message: @message, position: "right_position" %>
+  <%= render "messages/message", message: @message, position: "right_position", animate: true %>
 <% end %>
 <%= turbo_stream.update "message_form" do %>
   <%= render "chats/message_form", message: @new_message, receiver_id: @receiver.id %>

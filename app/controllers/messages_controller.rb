@@ -9,7 +9,7 @@ class MessagesController < ApplicationController
       end
       chat_id = @message.receiver.id
       # Send the message
-      message_partial = ApplicationController.render(partial: "messages/message", locals: { message: @message, position: "left_position" })
+      message_partial = ApplicationController.render(partial: "messages/message", locals: { message: @message, position: "left_position", animate: true })
       Turbo::StreamsChannel.broadcast_append_to("chat-#{chat_id}-messages", target: "messages", html: message_partial)
 
       # Update chats preview
