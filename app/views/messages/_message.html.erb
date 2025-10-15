@@ -1,10 +1,12 @@
 <div id="message_<%= message.id %>" class="<%= position %>">
   <p class="<%= animate ? 'animate' : ''%>"><%= message.text %></p>
-</div>
-<div class="<%= position %>">
-  <% if message.images.attached? %>
-    <% message.images.each do |image| %>
-      <%= image_tag url_for(image) %>
+  <div class="images <%= animate ? 'animate' : ''%>">
+    <% if message.images.attached? %>
+      <% message.images.each do |image| %>
+        <div class="<%= position %>">
+          <%= image_tag url_for(image) %>
+        </div>  
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>

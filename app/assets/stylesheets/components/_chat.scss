@@ -28,23 +28,27 @@
       border-radius: var(--space-m);
     }
   }
-  > button {
-    border: none;
-    min-width: 3rem;
-    margin-block-end: 0.5rem;
-    color: white;
-    font-weight: bold;
-    border-radius: var(--space-m);
-    background: var(--color-primary);
+
+  .file_input {
+    display: none;
+  }
+
+  .form_btn {
     display: flex;
+    min-width: 3rem;
     justify-content: center;
     align-items: center;
+    color: white;
+    background: var(--color-primary);
+    border-radius: var(--space-m);
+    font-size: 2rem;
+    font-weight: bolder;
+    text-decoration: none;
+    border: none;
+    padding: var(--space-xxxs);
+
     &:hover {
       background: var(--color-primary-rotate);
-    }
-    svg {
-      fill: white;
-      width: 2rem;
     }
   }
 }
