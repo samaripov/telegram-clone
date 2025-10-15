@@ -8,7 +8,7 @@
         <%= form.hidden_field :images, multiple: true, value: image.signed_id %>
       <% end %>
 
-      <%= form.file_field :images, multiple: true, id: "file-input", class: "file_input" %>
+      <%= form.file_field :images, multiple: true, id: "file-input", accept: 'image/*', class: "file_input" %>
       <label for="file-input" class="form_btn"> + </label>
     </div>
     <%= button_tag type: "submit", data: { message_target: "submit" } do %>
