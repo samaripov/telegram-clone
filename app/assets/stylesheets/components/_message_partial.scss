@@ -6,8 +6,15 @@
   > * {
     min-width: 100%;
   }
+  img {
+    max-width: 80%;
+    max-height: 10rem;
+    border-radius: var(--space-m);
+  }
+
   .left_position, .right_position {
     display: flex;
+    gap: 0.5rem;
   }
   .right_position {
     justify-content: end;

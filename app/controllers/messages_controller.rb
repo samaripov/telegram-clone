@@ -36,6 +36,6 @@ class MessagesController < ApplicationController
       @new_message = current_user.sent_messages.new
     end
     def message_params
-      params.require(:message).permit(:text, :receiver_id)
+      params.require(:message).permit(:text, :receiver_id, images: [])
     end
 end

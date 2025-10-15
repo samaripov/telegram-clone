@@ -7,7 +7,6 @@ export default class extends Controller {
     this.resizeObserver.observe(this.element);
 
     const messageInput = document.getElementById("message_text");
-    console.log(messageInput)
     messageInput.addEventListener("focus", this.scrollToTheBottom.bind(this))
   }
   disconnect() {
