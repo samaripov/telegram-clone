@@ -1,5 +1,6 @@
-<%= form_with url: [:users], method: :get, data: { turbo_frame: "results" }, id: "search_form" do |form| %>
-  <%= form.search_field :username, placeholder: "Search...", id: "search_input", autofocus: true, onkeyup: "this.form.requestSubmit()", autocomplete: "off" %>
+<%= form_with url: [:users], method: :get, data: { turbo_frame: "results" }, id: "search_form", "data-controller": "bridge--search" do |form| %>
+  <%= form.search_field :username, placeholder: "Search...", id: "search_input", autofocus: true, onkeyup: "this.form.requestSubmit()", autocomplete: "off", "data-bridge--search-target": "input" %>
+  <%= form.submit "Search" %>
 <% end %>
 <div>
   <form action="/submit" >
