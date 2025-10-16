@@ -2,13 +2,15 @@
   <main class="container">
     <%= render current_user%>
     <%= render "users/search_form" %>
-    <div class="content">
-      <% @users ||= [] %>
-      <% if @users.any? %>
-        <%= render @users %>
-      <% else %>
-        <p>No results</p>
-      <% end %>
-    </div>
+    <%= turbo_frame_tag "results" do %>
+      <div class="content">
+        <% @users ||= [] %>
+        <% if @users.any? %>
+          <%= render @users %>
+        <% else %>
+          <p>No results</p>
+        <% end %>
+      </div>
+    <% end %>
   </main>
 <% end %>

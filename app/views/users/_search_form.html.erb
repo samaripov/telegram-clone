@@ -1,9 +1,8 @@
-<%= form_with url: [:users], method: :get, local: true, data: { turbo_frame: "main" } do |form| %>
-  <%= form.search_field :username, placeholder: "Search..." %>
-  <%= form.submit "Search" %>
+<%= form_with url: [:users], method: :get, data: { turbo_frame: "results" }, id: "search_form" do |form| %>
+  <%= form.search_field :username, placeholder: "Search...", id: "search_input", autofocus: true, onkeyup: "this.form.requestSubmit()", autocomplete: "off" %>
 <% end %>
 <div>
-  <form action="/submit" method="POST">
+  <form action="/submit" >
     <label for="fruits">Choose a fruit:</label>
     <select id="fruits" name="fruit" style="display: block;">
         <option value="">Choose a Fruit</option> <!-- Default prompt -->
