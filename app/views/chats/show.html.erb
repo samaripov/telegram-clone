@@ -1,5 +1,6 @@
 <%= turbo_frame_tag "main" do %>
   <% content_for :title, @chat.label(current_user)%>
+  <% content_for :favicon, "/link_avatar.png"%>
   <main class="container chat" data-controller="scroll-down-when-new-message">
     <%= turbo_stream_from "chat-#{@chat.id}-messages" %>
     <h4 class="chat_title"><%= @chat.label(current_user) %></h4>

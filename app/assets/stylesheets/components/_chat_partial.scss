@@ -13,14 +13,13 @@
     font-size: larger;
   }
   .last_text{
-    margin-block-start: var(--space-xs);
     color: grey;
     display: -webkit-box;           /* For WebKit browsers */
     -webkit-box-orient: vertical;   /* Set the orientation to vertical */
     -webkit-line-clamp: 1;          /* Limit to one line */
     overflow: hidden;                /* Hide the overflow content */
     text-overflow: ellipsis;        /* Add ellipsis */
-    height: 1.2em; 
+    height: 1.5em; 
   }
   &:hover {
     background: rgb(243, 243, 243);
