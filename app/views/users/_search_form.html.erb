@@ -1,3 +1,17 @@
-<%= form_with url: [:users], method: :get, local: true, data: { turbo_frame: "main" }  do %>
-  <%= text_field_tag :username, params[:username], placeholder: "Search for user" %>
+<%= form_with url: [:users], method: :get, local: true, data: { turbo_frame: "main" } do |form| %>
+  <%= form.search_field :username, placeholder: "Search..." %>
+  <%= form.submit "Search" %>
 <% end %>
+<div>
+  <form action="/submit" method="POST">
+    <label for="fruits">Choose a fruit:</label>
+    <select id="fruits" name="fruit" style="display: block;">
+        <option value="">Choose a Fruit</option> <!-- Default prompt -->
+        <option value="apple">Apple</option>
+        <option value="banana">Banana</option>
+        <option value="orange">Orange</option>
+        <option value="grape">Grape</option>
+        <option value="watermelon">Watermelon</option>
+    </select>
+  </form>
+</div>

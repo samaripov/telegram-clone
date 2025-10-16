@@ -1,10 +1,11 @@
 <div id="message_<%= message.id %>" class="<%= position %>">
   <p class="<%= animate ? 'animate' : ''%>"><%= message.text %></p>
-  <div class="images <%= animate ? 'animate' : ''%>">
+  <div class="images_container <%= animate ? 'animate' : ''%>">
     <% if message.images.attached? %>
       <% message.images.each do |image| %>
-        <div class="<%= position %>">
-          <%= image_tag url_for(image) %>
+        <div class="<%= position %> image_loader" data-controller="update-image-on-load-finish">
+          <img src="/loading_animation.svg" class="thumbnail"/>
+          <%= image_tag url_for(image), class: "full_image" %>
         </div>  
       <% end %>
     <% end %>

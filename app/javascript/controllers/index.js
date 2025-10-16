@@ -12,3 +12,6 @@ application.register("message", MessageController)
 
 import ScrollDownWhenNewMessageController from "./scroll_down_when_new_message_controller"
 application.register("scroll-down-when-new-message", ScrollDownWhenNewMessageController)
+
+import UpdateImageOnLoadFinishController from "./update_image_on_load_finish_controller"
+application.register("update-image-on-load-finish", UpdateImageOnLoadFinishController)
