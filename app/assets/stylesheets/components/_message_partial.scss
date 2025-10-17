@@ -12,6 +12,7 @@
     min-width: 20rem;
     max-width: 20rem;
     border-radius: var(--space-m);
+    object-fit: cover;
     transition: opacity 1s ease-in-out;
   }
   .image_loader {
@@ -24,7 +25,6 @@
   }
   .thumbnail {
     opacity: 1;
-    object-fit: cover;
   }
   .blur {
     filter: blur(var(--space-xs));
