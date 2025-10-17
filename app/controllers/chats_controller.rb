@@ -2,6 +2,7 @@ class ChatsController < ApplicationController
   def show
     @chat = Chat.find(params[:id])
     @users = @chat.users
+    @messages = @chat.messages.order(:created_at)
   end
   def new
     @user = User.find(params[:receiver_id])
