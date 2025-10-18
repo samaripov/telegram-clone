@@ -18,7 +18,7 @@ class ChatsController < ApplicationController
     @chat = Chat.new()
     # Find all chats that current users are in.
     # If it doesn't exist make a new chat.
-    userchats = users_shared_chats(user_ids)
+    userchats = users_shared_chats(user_ids, user_ids.length)
 
     if userchats.any?
       @chat = Chat.find(userchats[0].chat_id)

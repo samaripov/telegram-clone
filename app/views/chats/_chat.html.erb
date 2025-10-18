@@ -3,7 +3,7 @@
     <p class="label"><%= label %></p>
     <%= turbo_stream_from "chat-#{chat.id}-last-message-stream" %>
     <%= turbo_frame_tag "chat-#{chat.id}-last-message" do %>
-      <%= render "chats/last_message", text: chat.last_sent_message.text, chat_id: chat.id %>
+      <%= render "chats/last_message", text: (chat.last_sent_message&.text).to_s, chat_id: chat.id %>
     <% end %>
   </div>
 <% end %>

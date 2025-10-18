@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
     @message = current_user.sent_messages.new(message_params)
     if @message.save
       respond_to do |format|
-        format.html { redirect_to chat_path(sender_id: current_user.id, receiver_id: @receiver.id), notice: "sent" }
+        format.html { redirect_to chat_path(@receiver), notice: "sent" }
         format.turbo_stream { flash.now[:notice] = "sent" }
       end
       chat_id = @message.receiver.id
@@ -18,7 +18,7 @@ class MessagesController < ApplicationController
 
     else
       respond_to do |format|
-        format.html { render :show, status: :unprocessable_content }
+        format.html { redirect_to chat_path(@receiver), alert: "Unable to send message." }
         format.turbo_stream { flash.now[:notice] = "Unable to send message." }
       end
     end
