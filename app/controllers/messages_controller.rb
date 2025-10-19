@@ -9,12 +9,32 @@ class MessagesController < ApplicationController
       end
       chat_id = @message.receiver.id
       # Send the message
-      message_partial = ApplicationController.render(partial: "messages/message", locals: { message: @message, position: "left_position", animate: true })
-      Turbo::StreamsChannel.broadcast_append_to("chat-#{chat_id}-messages", target: "messages", html: message_partial)
+      message_partial = ApplicationController.render(
+        partial: "messages/message",
+        locals: {
+          message: @message,
+          position: "left_position",
+          animate: true
+        })
+
+      Turbo::StreamsChannel.broadcast_append_to(
+        "chat-#{chat_id}-messages",
+        target: "messages",
+        html: message_partial
+        )
 
       # Update chats preview
-      last_message_partial = ApplicationController.render(partial: "chats/last_message", locals: { text: @message.text, chat_id: chat_id })
-      Turbo::StreamsChannel.broadcast_replace_to("chat-#{chat_id}-last-message-stream", target: "chat-#{chat_id}-last-message", html: last_message_partial)
+      last_message_partial = ApplicationController.render(
+        partial: "chats/last_message",
+        locals: {
+          text: @message.text,
+          chat_id: chat_id
+        })
+      Turbo::StreamsChannel.broadcast_replace_to(
+        "chat-#{chat_id}-last-message-stream",
+        target: "chat-#{chat_id}-last-message",
+        html: last_message_partial
+      )
 
     else
       respond_to do |format|

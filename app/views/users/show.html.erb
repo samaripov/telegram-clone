@@ -1,5 +1,5 @@
-<%= turbo_stream_from "#{current_user.id}-chats" %>
 <%= turbo_frame_tag "main" do %>
+  <%= turbo_stream_from "#{current_user.id}-chats" %>
   <main class="container">
     <%= render current_user%>
     <div id="users-chats">
