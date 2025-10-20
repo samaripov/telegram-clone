@@ -6,6 +6,7 @@
     <h4 class="chat_title"><%= @chat.label(current_user) %></h4>
     
     <div class="messages_container">
+      <%# <h1>THIS WAS UPDATED!!!</h1> %>
       <%= turbo_frame_tag "messages" do %>
         <% @messages.each do |message| %>
           <%= render "messages/message", message: message, position: "#{message.sender.id == current_user.id ? "right_position" : "left_position" }", animate: false %>
