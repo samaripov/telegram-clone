@@ -8,4 +8,4 @@ Project also focuses on file uploads to demonstrate the limits of Ruby on Rails 
 
 Here is a link to the Presentation at Columbus Ruby Brigade, where I discuss the benefits and draw-backs of using Hotwire Native library.
 
-[https://youtu.be/lKj7Ao0507k](url)
+[https://youtu.be/lKj7Ao0507k](https://youtu.be/lKj7Ao0507k)
